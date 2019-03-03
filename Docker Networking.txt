@@ -1,0 +1,27 @@
+
+***Docker NetworkNotes**
+
+$ docker network create -d bridge --subnet 10.0.0.1/24 ps-bridge
+$ docker network ls
+$ docker network inspect ps-bridge (will show you what container part of ps-bridge netowrk)
+
+$ ip link show (will show link details)
+
+
+$ docker exec -it c1 sh (login to container named c1 and open sh)
+$ ip a (get container ip and details)
+$ docker swarm init
+$ docker node ls
+$ docker network create -d overlay ps-over
+
+$ docker server create --name ps-svc --network ps-over --replicas 2 alpine sleep 1d
+$ docker service ps ps-svc
+
+**********
+Out of box native multi-host drive = "overlay
+underlay netwroks must be connected
+ports: 4789 (UDP), 7946 (TCP/UPD), 2377 (TCP)
+$docker network creat-d overlay..
+"Overlay" driver takes care of network details
+**********
+
